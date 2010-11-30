@@ -13,10 +13,15 @@ class Message(object):
            self.message_args = message_args 
 
     def __str__(self):
-        if self.col is not None:
-            return '%s:%s(%d): [%s] %s' % (self.filename, self.lineno, self.col, self.level, self.message % self.message_args)
+        output = []
+        if self.filename:
+            fileline = '%s:%s' % (self.filename, self.lineno)
         else:
-            return '%s:%s: [%s] %s' % (self.filename, self.lineno, self.level, self.message % self.message_args)
+            fileline = self.lineno
+        if self.col is not None:
+            return '%s(%d): [%s] %s' % (fileline, self.col, self.level, self.message % self.message_args)
+        else:
+            return '%s: [%s] %s' % (fileline, self.level, self.message % self.message_args)
 
 
 class UnusedImport(Message):
