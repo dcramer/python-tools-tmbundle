@@ -13,8 +13,9 @@
 	<key>command</key>
 	<string>. "$TM_SUPPORT_PATH/lib/webpreview.sh"
 html_header "Validate Python"
-export PYTHONPATH="$TM_BUNDLE_SUPPORT/bin/":$PYTHONPATH
-"${TM_RUBY:-python}" "$TM_BUNDLE_SUPPORT/bin/pyflakes/scripts/pyflakes.py"
+echo "&lt;pre&gt;"
+PYTHONPATH="$TM_BUNDLE_SUPPORT/bin/":$PYTHONPATH "${TM_RUBY:-python}" "$TM_BUNDLE_SUPPORT/bin/pyflakes/scripts/pyflakes.py"
+echo "&lt;/pre&gt;"
 html_footer
 </string>
 	<key>fallbackInput</key>
