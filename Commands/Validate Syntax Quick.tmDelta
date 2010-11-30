@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>changed</key>
+	<dict>
+		<key>command</key>
+		<string># runs on save; only notifies you if it raises a warning or error
+PYTHONPATH="$TM_BUNDLE_SUPPORT/bin/":$PYTHONPATH "${TM_RUBY:-python}" "$TM_BUNDLE_SUPPORT/bin/pyflakes/scripts/pyflakes.py"</string>
+		<key>name</key>
+		<string>Validate Syntax Quick</string>
+	</dict>
+	<key>deleted</key>
+	<array/>
+	<key>isDelta</key>
+	<true/>
+	<key>uuid</key>
+	<string>7785C4AD-8DA8-4E0E-B5B5-1B1F1027F3C9</string>
+</dict>
+</plist>

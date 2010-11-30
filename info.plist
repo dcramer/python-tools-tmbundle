@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>Python Tools Bundle</string>
+	<key>ordering</key>
+	<array>
+		<string>C2C6DC11-73FF-4014-BA70-699876963185</string>
+		<string>7785C4AD-8DA8-4E0E-B5B5-1B1F1027F3C9</string>
+	</array>
+	<key>uuid</key>
+	<string>6C5B9CF0-3D29-41C0-B3AD-608F681A159E</string>
+</dict>
+</plist>

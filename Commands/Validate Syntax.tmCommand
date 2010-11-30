@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>saveActiveFile</string>
+	<key>bundleUUID</key>
+	<string>E4A0D653-1058-42CF-91C5-52D78242CC7A</string>
+	<key>capturePattern</key>
+	<string>^(.*)\s+line:\s+(\d+)\s+col:\s+(\d+).*$</string>
+	<key>columnCaptureRegister</key>
+	<string>3</string>
+	<key>command</key>
+	<string>. "$TM_SUPPORT_PATH/lib/webpreview.sh"
+html_header "Validate Python"
+export PYTHONPATH="$TM_BUNDLE_SUPPORT/bin/":$PYTHONPATH
+"${TM_RUBY:-python}" "$TM_BUNDLE_SUPPORT/bin/pyflakes/scripts/pyflakes.py"
+html_footer
+</string>
+	<key>fallbackInput</key>
+	<string>document</string>
+	<key>fileCaptureRegister</key>
+	<string>1</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>keyEquivalent</key>
+	<string>@V</string>
+	<key>lineCaptureRegister</key>
+	<string>2</string>
+	<key>name</key>
+	<string>Validate Syntax</string>
+	<key>output</key>
+	<string>showAsHTML</string>
+	<key>scope</key>
+	<string>source.python</string>
+	<key>uuid</key>
+	<string>C2C6DC11-73FF-4014-BA70-699876963185</string>
+</dict>
+</plist>
