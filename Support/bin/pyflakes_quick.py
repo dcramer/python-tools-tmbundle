@@ -33,7 +33,9 @@ def check(codeString, filename):
         return w.messages
 
 def main():
-    warnings = check(sys.stdin.read(), '')
+    content = open(sys.argv[-1], 'r').read()
+
+    warnings = check(content, '')
     for warning in warnings:
         print warning
 

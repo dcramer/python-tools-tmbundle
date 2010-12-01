@@ -15,7 +15,7 @@
 html_header "Validate Python"
 PYTHONPATH="$TM_BUNDLE_SUPPORT/bin/":$PYTHONPATH "${TM_PYTHON:-python}" "$TM_BUNDLE_SUPPORT/bin/pyflakes_html.py"
 html_footer
-</string>
+	</string>
 	<key>fallbackInput</key>
 	<string>document</string>
 	<key>fileCaptureRegister</key>
@@ -23,7 +23,7 @@ html_footer
 	<key>input</key>
 	<string>selection</string>
 	<key>keyEquivalent</key>
-	<string>@V</string>
+	<string>~V</string>
 	<key>lineCaptureRegister</key>
 	<string>2</string>
 	<key>name</key>

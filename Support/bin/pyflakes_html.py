@@ -89,25 +89,26 @@ def check(codeString, filename):
 def main():
     lineno = re.compile(r'^(\d+)\:')
     results = {'E': 0, 'W': 0}
-    for filename in sys.argv:
-        warnings = check(sys.stdin.read(), filename)
-        output = []
-        for warning in warnings:
-            line = lineno.sub('' % dict(
-                filepath=warning.filename,
-                lineno=warning.lineno,
-                col=warning.col,
-            ), str(warning))
-            output.append('<li><a href="txmt://open?url=file://%(filepath)s&line=%(lineno)s&column=%(col)s">%(filename)s:%(lineno)s</a><pre><code>%(message)s</code></pre></li>' % dict(
-                col=warning.col,
-                lineno=warning.lineno,
-                filepath=warning.filename,
-                filename=os.path.basename(warning.filename),
-                message=warning.message % warning.message_args,
-            ))
-            results[warning.level] += 1
+    output, warnings = [], []
+
+    warnings += check(sys.stdin.read(), sys.argv[0])
+    
+    for warning in warnings:
+        line = lineno.sub('' % dict(
+            filepath=warning.filename,
+            lineno=warning.lineno,
+            col=warning.col,
+        ), str(warning))
+        output.append('<li><a href="txmt://open?url=file://%(filepath)s&line=%(lineno)s&column=%(col)s">%(filename)s:%(lineno)s</a><pre><code>%(message)s</code></pre></li>' % dict(
+            col=warning.col,
+            lineno=warning.lineno,
+            filepath=warning.filename,
+            filename=os.path.basename(warning.filename),
+            message=warning.message % warning.message_args,
+        ))
+        results[warning.level] += 1
   
-        output = "\n\n".join(output)
+    output = "\n\n".join(output)
     
     print HTML % dict(
         output=output,
