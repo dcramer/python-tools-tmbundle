@@ -6,7 +6,7 @@ Installation
 
 1. Clone the repository from GitHub.
 
-   	``git clone https://dcramer@github.com/dcramer/python-tools-tmbundle.git ~/Library/Application\ Support/TextMate/Bundles/PythonTools.tmbundle``
+   	``git clone https://github.com/dcramer/python-tools-tmbundle.git ~/Library/Application\ Support/TextMate/Bundles/PythonTools.tmbundle``
 
 2. Reload TextMate or Navigate to Bundles -> Bundle Editor -> Reload Bundles.
 
