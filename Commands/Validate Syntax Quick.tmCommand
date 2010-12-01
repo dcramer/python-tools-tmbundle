@@ -6,7 +6,7 @@
 	<string>saveActiveFile</string>
 	<key>command</key>
 	<string># runs on save; only notifies you if it raises a warning or error
-PYTHONPATH="$TM_BUNDLE_SUPPORT/bin/":$PYTHONPATH "${TM_RUBY:-python}" "$TM_BUNDLE_SUPPORT/bin/pyflakes_quick.py"</string>
+PYTHONPATH="$TM_BUNDLE_SUPPORT/bin/":$PYTHONPATH "${TM_PYTHON:-python}" "$TM_BUNDLE_SUPPORT/bin/pyflakes_quick.py"</string>
 	<key>input</key>
 	<string>none</string>
 	<key>keyEquivalent</key>
