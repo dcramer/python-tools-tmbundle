@@ -91,7 +91,9 @@ def main():
     results = {'E': 0, 'W': 0}
     output, warnings = [], []
 
-    warnings += check(sys.stdin.read(), sys.argv[0])
+    filepath = os.environ['TM_FILEPATH']
+
+    warnings += check(sys.stdin.read(), filepath)
     
     for warning in warnings:
         line = lineno.sub('' % dict(
