@@ -21,7 +21,7 @@ html_footer
 	<key>fileCaptureRegister</key>
 	<string>1</string>
 	<key>input</key>
-	<string>selection</string>
+	<string>document</string>
 	<key>keyEquivalent</key>
 	<string>~V</string>
 	<key>lineCaptureRegister</key>
