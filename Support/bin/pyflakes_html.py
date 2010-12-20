@@ -67,7 +67,7 @@ HTML = """
 
 def check(codeString, filename):
     try:
-        tree = compile(codeString.strip(), filename, 'exec', _ast.PyCF_ONLY_AST)
+        tree = compile(codeString.rstrip(), filename, 'exec', _ast.PyCF_ONLY_AST)
     except (SyntaxError, IndentationError):
         value = sys.exc_info()[1]
         try:
