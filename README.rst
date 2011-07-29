@@ -6,8 +6,13 @@ Installation
 
 1. Clone the repository from GitHub.
 
-   	``git clone https://github.com/dcramer/python-tools-tmbundle.git ~/Library/Application\ Support/TextMate/Bundles/PythonTools.tmbundle``
+::
 
+    git clone https://github.com/dcramer/python-tools-tmbundle.git ~/Library/Application\ Support/TextMate/Bundles/PythonTools.tmbundle
+    cd ~/Library/Application\ Support/TextMate/Bundles/PythonTools.tmbundle
+    git submodule update --init
+    git submodule foreach git pull origin master
+ 
 2. Reload TextMate or Navigate to Bundles -> Bundle Editor -> Reload Bundles.
 
 PyFlakes
