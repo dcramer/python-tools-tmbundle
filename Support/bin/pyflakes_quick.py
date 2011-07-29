@@ -2,35 +2,12 @@
 """
 Implementation of the command-line I{pyflakes} tool.
 """
-
-import _ast
+import os.path
 import sys
-import os
 
-sys.path.insert(0, os.path.dirname(__file__))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'pyflakes'))
 
-checker = __import__('pyflakes.checker').checker
-
-def check(codeString, filename):
-    try:
-        tree = compile(codeString.rstrip(), filename, 'exec', _ast.PyCF_ONLY_AST)
-    except (SyntaxError, IndentationError):
-        value = sys.exc_info()[1]
-        try:
-            (lineno, offset, line) = value[1][1:]
-        except IndexError:
-            print >> sys.stderr, 'could not compile %r' % (filename,)
-            raise SystemExit
-        if line.endswith("\n"):
-            line = line[:-1]
-        print >> sys.stderr, '%s:%d: could not compile' % (filename, lineno)
-        print >> sys.stderr, line
-        print >> sys.stderr, " " * (offset-2), "^"
-        raise SystemExit
-    else:
-        w = checker.Checker(tree, filename)
-        w.messages.sort(lambda a, b: cmp(a.lineno, b.lineno))
-        return w.messages
+from pyflakes.scripts.pyflakes import check
 
 def main():
     content = open(sys.argv[-1], 'r').read()

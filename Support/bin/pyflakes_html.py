@@ -3,12 +3,12 @@
 Implementation of the command-line I{pyflakes} tool.
 """
 
-import _ast
-import re
 import sys
 import os
 
-sys.path.insert(0, os.path.dirname(__file__))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'pyflakes'))
+
+from pyflakes.scripts.pyflakes import check
 
 checker = __import__('pyflakes.checker').checker
 
@@ -65,29 +65,9 @@ HTML = """
 </html>
 """
 
-def check(codeString, filename):
-    try:
-        tree = compile(codeString.rstrip(), filename, 'exec', _ast.PyCF_ONLY_AST)
-    except (SyntaxError, IndentationError):
-        value = sys.exc_info()[1]
-        try:
-            (lineno, offset, line) = value[1][1:]
-        except IndexError:
-            print >> sys.stderr, 'could not compile %r' % (filename,)
-            raise SystemExit
-        if line.endswith("\n"):
-            line = line[:-1]
-        print >> sys.stderr, '%s:%d: could not compile' % (filename, lineno)
-        print >> sys.stderr, line
-        print >> sys.stderr, " " * (offset-2), "^"
-        raise SystemExit
-    else:
-        w = checker.Checker(tree, filename)
-        w.messages.sort(lambda a, b: cmp(a.lineno, b.lineno))
-        return w.messages
-
 def main():
-    lineno = re.compile(r'^(\d+)\:')
+    # import re
+    # lineno = re.compile(r'^(\d+)\:')
     results = {'E': 0, 'W': 0}
     output, warnings = [], []
 
@@ -96,11 +76,11 @@ def main():
     warnings += check(sys.stdin.read(), filepath)
     
     for warning in warnings:
-        line = lineno.sub('' % dict(
-            filepath=warning.filename,
-            lineno=warning.lineno,
-            col=warning.col,
-        ), str(warning))
+        # line = lineno.sub('' % dict(
+        #     filepath=warning.filename,
+        #     lineno=warning.lineno,
+        #     col=warning.col,
+        # ), str(warning))
         output.append('<li><a href="txmt://open?url=file://%(filepath)s&line=%(lineno)s&column=%(col)s">%(filename)s:%(lineno)s</a><pre><code>%(message)s</code></pre></li>' % dict(
             col=warning.col,
             lineno=warning.lineno,
