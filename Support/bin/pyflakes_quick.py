@@ -12,7 +12,9 @@ from pyflakes.scripts.pyflakes import check
 def main():
     content = open(sys.argv[-1], 'r').read()
 
-    check(content, '')
+    warnings = check(content, '')
+    for warning in warnings:
+        print warning
 
 if __name__ == '__main__':
     main()
